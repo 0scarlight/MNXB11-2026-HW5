@@ -14,9 +14,7 @@ void swap_ptr(int* a, int* b, int *c) {
 };
 
 
-UniqueData::UniqueData(int Value) {
-
-};
+UniqueData::UniqueData(int Value) : data_(std::make_unique<int>(Value)) {}
 
 int UniqueData::get() const {
     return *data_;

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <random>
 #include <memory>
+#include <sstream>
 
 namespace homework {
 
@@ -39,15 +40,52 @@ namespace homework {
   // as 2.1
   // Derived class Knight
   // TO DO: implement attack() and clone() and setWeapon()
+
   // Should have a private member variable for weapon (std::string)
+
   // Note: use std::make_unique in clone() and the \it{this} pointer to copy the object. E.g. std::make_unique<Type>(*this);
+
   // The attack should use std::cout to print something like "<name> swings a <weapon>\n"
+
   // The setWeapon() method should set the weapon variable (the private member variable) 
+
+  class Knight : public Entity {
+    public:
+    //constructor
+    Knight(std::string name) : Entity(name){}
+
+    //member functions
+
+    void attack() const override;
+
+    std::unique_ptr<Entity> clone() const override;
+
+    void setWeapon(std::string weaponName);
+
+    private:
+      std::string weapon;
+  };
 
   // as 2.2
   // Derived class Sorcerer
   // TO DO: implement attack() and clone() and setAbility()
   // Same as the Knight class
+
+  //Derived class of Entity  
+  class Sorcerer : public Entity {
+    public:
+    //constructor
+    Sorcerer(std::string name) : Entity(name){}
+
+    void attack() const override;
+
+    std::unique_ptr<Entity> clone() const override;
+
+    void setAbility(std::string abilityName);
+
+    private:
+      std::string ability;
+  };
 
 
 

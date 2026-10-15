@@ -94,14 +94,45 @@ namespace homework {
 
   // NOT MANDATORY (Stretch goal): as 2.3. You can pass assignment without doing this one. 
   // If you want to see how templates work, you can implement this one.
+
   // Duel class template
   // TO DO: create a struct/class called Duel that is templated by two types (T1 and T2)
+  
   // The constructor should take two pointers (T1* and T2*)
+
   // The fight() method should:
   // - call attack() on both entities
   // - randomly select one of the two entities as the winner (use the random number generator above)
   // - print to std::cout "<name> wins the duel!\n"
   // - return a std::unique_ptr<Entity> to the winner (use clone() to copy the object)
+
+  template <class T1, class T2> 
+  class Duel {
+    public:
+    //constructor
+    Duel(T1* fighter1, T2* fighter2): fighter1_(fighter1), fighter2_(fighter2) {}
+    
+    //fight() method
+    std::unique_ptr<Entity> fight() const {
+      fighter1_->attack();
+      fighter2_->attack();
+
+      auto random_number = dist(gen);
+
+      if (random_number == 1) {
+        std::cout << fighter1_->getName() << " wins the duel\n";
+        return fighter1_->clone();
+      } else {
+        std::cout << fighter2_->getName() << " wins the duel\n";
+        return fighter2_->clone();
+      }
+    };  
+
+    private:
+    T1* fighter1_;
+    T2* fighter2_;
+    
+  };
 
 } // namespace homework
 

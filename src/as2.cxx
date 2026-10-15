@@ -32,6 +32,5 @@ void Sorcerer::setAbility(std::string abilityName) {
     return;
 }
 
-
 } // namespace homework
 
